@@ -36,6 +36,7 @@ type Props = NavigationViewProps & {
   navigation: NavigationTabProp;
   descriptors: SceneDescriptorMap;
   screenProps?: unknown;
+  position?: 'top' | 'bottom';
 };
 
 type State = {
@@ -134,12 +135,14 @@ class TabNavigationView extends React.PureComponent<Props, State> {
   };
 
   render() {
-    const { navigation, renderScene, lazy } = this.props;
+    const { navigation, renderScene, lazy, position } = this.props;
     const { routes } = navigation.state;
     const { loaded } = this.state;
+    const positionedAtTop = position === 'top';
 
     return (
       <View style={styles.container}>
+        {positionedAtTop && this._renderTabBar()}
         <ScreenContainer style={styles.pages}>
           {routes.map((route, index) => {
             if (lazy && !loaded.includes(index)) {
@@ -160,7 +163,7 @@ class TabNavigationView extends React.PureComponent<Props, State> {
             );
           })}
         </ScreenContainer>
-        {this._renderTabBar()}
+        {!positionedAtTop && this._renderTabBar()}
       </View>
     );
   }
