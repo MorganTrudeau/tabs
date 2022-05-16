@@ -22,6 +22,7 @@ declare type Props = NavigationViewProps & {
 type TabConfig = {
     tabBarComponent?: React.ComponentType<any>;
     tabBarOptions?: BottomTabBarOptions;
+    position?: "top" | "bottom"
 }
 declare const _default: (routes: import("react-navigation").NavigationRouteConfigMap<NavigationBottomTabOptions, NavigationTabProp<NavigationRoute<import("react-navigation").NavigationParams>, any>>, config?: TabConfig & import("react-navigation").CreateNavigatorConfig<{}, import("react-navigation").NavigationTabRouterConfig, Partial<NavigationBottomTabOptions>, NavigationTabProp<NavigationRoute<import("react-navigation").NavigationParams>, any>> | undefined) => React.ComponentType<Pick<Props, "navigation" | "descriptors" | "screenProps" | "position" | "getAccessibilityRole" | "getAccessibilityStates" | "lazy" | "tabBarComponent" | "tabBarOptions"> & {
     navigationConfig: any;
